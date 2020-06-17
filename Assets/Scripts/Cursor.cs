@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using UnityEngine;
 
 public class Cursor : MonoBehaviour
@@ -6,6 +7,18 @@ public class Cursor : MonoBehaviour
     private Vector3 _startPos;
     private Vector3 _target;
     private float _t;
+
+    private void Update()
+    {
+        /*RaycastHit2D hit;
+ 
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        if (hit = Physics2D.Raycast(ray.origin, new Vector2(0, 0)))
+        {
+            transform.position = hit.point;
+        }*/
+        transform.localPosition = Input.mousePosition - new Vector3(526, 744);
+    }
 
     public void Move(Vector3 target, float time)
     {

@@ -12,6 +12,8 @@ GameObject:
   - component: {fileID: 2659709221403382206}
   - component: {fileID: 4023619549272560011}
   - component: {fileID: 3888936224342126706}
+  - component: {fileID: 1323612173830993022}
+  - component: {fileID: 8721172682174198583}
   m_Layer: 5
   m_Name: Option Button
   m_TagString: Untagged
@@ -88,6 +90,51 @@ MonoBehaviour:
   DefaultButton: {fileID: 2800000, guid: 536271d072d7c244bb152805bf4edcfe, type: 3}
   RedButton: {fileID: 2800000, guid: fb962c75e8b76a74a8661b91004f3d96, type: 3}
   GreenButton: {fileID: 2800000, guid: 6c0e52e8a2da3ac4a95a16f1d50dcb01, type: 3}
+--- !u!95 &1323612173830993022
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2659709221403382202}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 7952fa8eb9eeb5540bd31e808ed6ae52, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!61 &8721172682174198583
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2659709221403382202}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.4755249, y: 0.48912048}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 472.79218, y: 164.71439}
+  m_EdgeRadius: 0
 --- !u!1 &6978607877688448205
 GameObject:
   m_ObjectHideFlags: 0

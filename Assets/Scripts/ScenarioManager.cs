@@ -12,10 +12,16 @@ public class ScenarioManager : MonoBehaviour
     
     public OptionButton[] Buttons;
     public TextMeshProUGUI[] Labels;
+
+    public Texture2D CursorTexture;
+
+    private bool _buttonPressed = false;
     
     private void Start()
     {
-        DumbScenario();
+        //UnityEngine.Cursor.SetCursor(CursorTexture, new Vector2(0, 0), CursorMode.Auto);
+        //UnityEngine.Cursor.visible = false;
+        SmartScenario();
         //SmartScenario();
         //ClickbaitScenario();
     }
@@ -29,58 +35,57 @@ public class ScenarioManager : MonoBehaviour
 
     private IEnumerator ClickbaitCoroutine()
     {
+        Cursor.gameObject.SetActive(false);
         Labels[0].text = "Cave";
         Labels[1].text = "Hollow";
         Labels[2].text = "Hole";
         Labels[3].text = "Love";
-        Dummy.PlaySign(Sign.Love);
+        Dummy.PlaySignCycle(Sign.Love);
         yield return new WaitForSeconds(4f);
-        Cursor.Move(Buttons[0].transform.position, 2f);
-        yield return new WaitForSeconds(2.3f);
-        Cursor.Move(Buttons[2].transform.position, 2f);
-        yield return new WaitForSeconds(2.5f);
-        Cursor.Move(Buttons[0].transform.position, 3f);
-        yield return new WaitForSeconds(3.1f);
-        Cursor.Move(Buttons[3].transform.position, 4f);
-        Dummy.PlaySign(Sign.Love);
-        yield return new WaitForSeconds(4.2f);
-        Cursor.Move(Buttons[1].transform.position, 2f);
-        yield return new WaitForSeconds(2.2f);
-        Cursor.Move(Buttons[3].transform.position, 3f);
-        yield return new WaitForSeconds(3.3f);
         
-        Buttons[3].SetGreen();
-        Confetti.Spawn();
+        //Cursor.gameObject.SetActive(true);
+        Buttons[3].OnClick = () =>
+        {
+            _buttonPressed = true;
+            Buttons[3].SetGreen();
+            Confetti.Spawn();
+            Dummy.StopCycle();
+        };
+        
+        yield return new WaitUntil(() => _buttonPressed);
+        
         yield return new WaitForSeconds(2f);
         //===
         
+        _buttonPressed = false;
+        //Cursor.gameObject.SetActive(false);
+        Buttons[3].OnClick = () => { };
         Buttons[3].SetDefault();
         Labels[0].text = "Smooth";
         Labels[1].text = "Tight";
         Labels[2].text = "Nice";
         Labels[3].text = "Fast";
-        Dummy.PlaySign(Sign.Nice);
+        Dummy.PlaySignCycle(Sign.Nice);
         yield return new WaitForSeconds(4f);
-        Cursor.Move(Buttons[1].transform.position, 2f);
-        yield return new WaitForSeconds(2.3f);
-        Cursor.Move(Buttons[2].transform.position, 1f);
-        yield return new WaitForSeconds(1.5f);
-        Cursor.Move(Buttons[0].transform.position, 3f);
-        Dummy.PlaySign(Sign.Nice);
-        yield return new WaitForSeconds(4.5f);
-        Cursor.Move(Buttons[3].transform.position, 1.8f);
-        yield return new WaitForSeconds(2.6f);
-        Cursor.Move(Buttons[0].transform.position, 1.5f);
-        yield return new WaitForSeconds(2.2f);
-        Cursor.Move(Buttons[2].transform.position, 3f);
-        yield return new WaitForSeconds(3.3f);
         
-        Buttons[2].SetGreen();
-        Confetti.Spawn();
+        //Cursor.gameObject.SetActive(true);
+        Buttons[2].OnClick = () =>
+        {
+            _buttonPressed = true;
+            Buttons[2].SetGreen();
+            Confetti.Spawn();
+            Dummy.StopCycle();
+        };
+        
+        yield return new WaitUntil(() => _buttonPressed);
+        
         yield return new WaitForSeconds(2f);
         //===
         
+        _buttonPressed = false;
+        //Cursor.gameObject.SetActive(false);
         Buttons[2].SetDefault();
+        Buttons[2].OnClick = () => { };
     }
     
     //====================================================================
@@ -92,61 +97,88 @@ public class ScenarioManager : MonoBehaviour
     
     private IEnumerator SmartCoroutine()
     {
+        Cursor.gameObject.SetActive(false);
         Labels[0].text = "Kiss";
         Labels[1].text = "Meet";
         Labels[2].text = "Close";
         Labels[3].text = "Shrink";
-        Dummy.PlaySign(Sign.Meet);
+        Dummy.PlaySignCycle(Sign.Meet);
         yield return new WaitForSeconds(4f);
+
+        //Cursor.gameObject.SetActive(true);
+        Buttons[1].OnClick = () =>
+        {
+            _buttonPressed = true;
+            Buttons[1].SetGreen();
+            Confetti.Spawn();
+            Dummy.StopCycle();
+        };
         
-        Cursor.Move(Buttons[2].transform.position, 2f);
-        yield return new WaitForSeconds(2f);
-        Cursor.Move(Buttons[1].transform.position, 3f);
-        yield return new WaitForSeconds(3.5f);
+        yield return new WaitUntil(() => _buttonPressed);
         
-        Buttons[1].SetGreen();
-        Confetti.Spawn();
         yield return new WaitForSeconds(2f);
         //===
-        
+
+        _buttonPressed = false;
+        //Cursor.gameObject.SetActive(false);
         Buttons[1].SetDefault();
+        Buttons[1].OnClick = () => { };
         Labels[0].text = "Step";
         Labels[1].text = "Barrier";
         Labels[2].text = "Bump";
         Labels[3].text = "Name";
         
-        Dummy.PlaySign(Sign.Name);
+        yield return new WaitForSeconds(0.5f);
+        
+        Dummy.PlaySignCycle(Sign.Name);
         yield return new WaitForSeconds(4f);
         
-        Cursor.Move(Buttons[0].transform.position, 3f);
-        yield return new WaitForSeconds(4f);
+        //Cursor.gameObject.SetActive(true);
+        Buttons[0].OnClick = () =>
+        {
+            _buttonPressed = true;
+            Buttons[0].SetRed();
+            Dummy.StopCycle();
+        };
         
-        Buttons[0].SetRed();
+        yield return new WaitUntil(() => _buttonPressed);
+        
         yield return new WaitForSeconds(2f);
         //===
         
+        _buttonPressed = false;
+        //Cursor.gameObject.SetActive(false);
         Buttons[0].SetDefault();
+        Buttons[0].OnClick = () => { };
         Labels[0].text = "Smooth";
         Labels[1].text = "Tight";
         Labels[2].text = "Nice";
         Labels[3].text = "Fast";
         
-        Dummy.PlaySign(Sign.Nice);
+        Dummy.PlaySignCycle(Sign.Nice);
         yield return new WaitForSeconds(4f);
         
-        Cursor.Move(Buttons[1].transform.position, 1f);
-        yield return new WaitForSeconds(2f);
-        Cursor.Move(Buttons[2].transform.position, 3f);
-        yield return new WaitForSeconds(3.5f);
+        //Cursor.gameObject.SetActive(true);
+        Buttons[2].OnClick = () =>
+        {
+            _buttonPressed = true;
+            Buttons[2].SetGreen();
+            Confetti.Spawn();
+            Dummy.StopCycle();
+        };
         
-        Buttons[2].SetGreen();
-        Confetti.Spawn();
+        yield return new WaitUntil(() => _buttonPressed);
         
         yield return new WaitForSeconds(2f);
         //===
         
+        _buttonPressed = false;
+        //Cursor.gameObject.SetActive(false);
         Buttons[2].SetDefault();
+        Buttons[2].OnClick = () => { };
     }
+    
+    
     
     //====================================================================
 
@@ -157,41 +189,55 @@ public class ScenarioManager : MonoBehaviour
 
     private IEnumerator DumbCoroutine()
     {
+        Cursor.gameObject.SetActive(false);
         Labels[0].text = "Love";
         Labels[1].text = "Hole";
         Labels[2].text = "Hollow";
         Labels[3].text = "Cave";
-        Dummy.PlaySign(Sign.Love);
+        Dummy.PlaySignCycle(Sign.Love);
         yield return new WaitForSeconds(4f);
         
-        Cursor.Move(Buttons[0].transform.position, 1f);
-        yield return new WaitForSeconds(1.3f);
-        Cursor.Move(Buttons[3].transform.position, 2f);
-        yield return new WaitForSeconds(2.5f);
+        //Cursor.gameObject.SetActive(true);
+        Buttons[1].OnClick = () =>
+        {
+            _buttonPressed = true;
+            Buttons[1].SetRed();
+            Dummy.StopCycle();
+        };
         
-        Buttons[3].SetRed();
+        yield return new WaitUntil(() => _buttonPressed);
+        
         yield return new WaitForSeconds(2f);
         //===
         
-        Buttons[3].SetDefault();
+        _buttonPressed = false;
+        //Cursor.gameObject.SetActive(false);
+        Buttons[1].SetDefault();
+        Buttons[1].OnClick = () => { };
         Labels[0].text = "Yes";
         Labels[1].text = "No";
         Labels[2].text = "Three";
         Labels[3].text = "Eat";
-        
-        Dummy.PlaySign(Sign.No);
+        Dummy.PlaySignCycle(Sign.No);
         yield return new WaitForSeconds(4f);
         
-        Cursor.Move(Buttons[0].transform.position, 2.2f);
-        yield return new WaitForSeconds(2.5f);
-        Cursor.Move(Buttons[2].transform.position, 2.5f);
-        yield return new WaitForSeconds(3f);
+        //Cursor.gameObject.SetActive(true);
+        Buttons[2].OnClick = () =>
+        {
+            _buttonPressed = true;
+            Buttons[2].SetRed();
+            Dummy.StopCycle();
+        };
         
-        Buttons[2].SetRed();
+        yield return new WaitUntil(() => _buttonPressed);
+        
         yield return new WaitForSeconds(2f);
         //===
         
+        _buttonPressed = false;
+        //Cursor.gameObject.SetActive(false);
         Buttons[2].SetDefault();
+        Buttons[2].OnClick = () => { };
         Labels[0].text = "Roof";
         Labels[1].text = "Elevator";
         Labels[2].text = "Understand";
@@ -200,7 +246,7 @@ public class ScenarioManager : MonoBehaviour
         Dummy.PlaySign(Sign.Understand);
         yield return new WaitForSeconds(4f);
         
-        Cursor.Move(Buttons[0].transform.position, 3f);
+        //Cursor.Move(Buttons[0].transform.position, 3f);
         yield return new WaitForSeconds(3.5f);
         
         Buttons[0].SetRed();

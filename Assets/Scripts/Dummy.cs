@@ -6,6 +6,7 @@ using UnityEngine;
 public class Dummy : MonoBehaviour
 {
     private Animator _animator;
+    private bool _playing;
 
     private static readonly Dictionary<Sign, string> Triggers = new Dictionary<Sign, string>
     {
@@ -27,5 +28,25 @@ public class Dummy : MonoBehaviour
     {
         Debug.Log($"playing {Triggers[sign]}");
         _animator.SetTrigger(Triggers[sign]);
+    }
+
+    public void PlaySignCycle(Sign sign)
+    {
+        _playing = true;
+        StartCoroutine(PlayCycle(sign));
+    }
+
+    private IEnumerator PlayCycle(Sign sign)
+    {
+        while (_playing)
+        {
+            _animator.SetTrigger(Triggers[sign]);
+            yield return new WaitForSeconds(6f);
+        }
+    }
+
+    public void StopCycle()
+    {
+        _playing = false;
     }
 }
