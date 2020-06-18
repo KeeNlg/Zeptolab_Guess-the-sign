@@ -102,7 +102,7 @@ public class ScenarioManager : MonoBehaviour
         Labels[1].text = "Meet";
         Labels[2].text = "Close";
         Labels[3].text = "Shrink";
-        Dummy.PlaySignCycle(Sign.Meet);
+        Dummy.PlaySign(Sign.Meet);
         yield return new WaitForSeconds(4f);
 
         //Cursor.gameObject.SetActive(true);
@@ -113,6 +113,10 @@ public class ScenarioManager : MonoBehaviour
             Confetti.Spawn();
             Dummy.StopCycle();
         };
+        
+        yield return new WaitForSeconds(4f);
+        
+        Dummy.PlaySign(Sign.Meet);
         
         yield return new WaitUntil(() => _buttonPressed);
         
@@ -130,7 +134,7 @@ public class ScenarioManager : MonoBehaviour
         
         yield return new WaitForSeconds(0.5f);
         
-        Dummy.PlaySignCycle(Sign.Name);
+        Dummy.PlaySign(Sign.Name);
         yield return new WaitForSeconds(4f);
         
         //Cursor.gameObject.SetActive(true);
@@ -140,6 +144,10 @@ public class ScenarioManager : MonoBehaviour
             Buttons[0].SetRed();
             Dummy.StopCycle();
         };
+        
+        yield return new WaitForSeconds(4f);
+        
+        Dummy.PlaySign(Sign.Name);
         
         yield return new WaitUntil(() => _buttonPressed);
         
@@ -155,7 +163,7 @@ public class ScenarioManager : MonoBehaviour
         Labels[2].text = "Nice";
         Labels[3].text = "Fast";
         
-        Dummy.PlaySignCycle(Sign.Nice);
+        Dummy.PlaySign(Sign.Nice);
         yield return new WaitForSeconds(4f);
         
         //Cursor.gameObject.SetActive(true);
@@ -166,6 +174,10 @@ public class ScenarioManager : MonoBehaviour
             Confetti.Spawn();
             Dummy.StopCycle();
         };
+        
+        yield return new WaitForSeconds(4f);
+        
+        Dummy.PlaySign(Sign.Nice);
         
         yield return new WaitUntil(() => _buttonPressed);
         

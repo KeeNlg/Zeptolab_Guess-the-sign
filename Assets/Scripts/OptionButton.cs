@@ -43,7 +43,6 @@ public class OptionButton : MonoBehaviour
 
     private void OnMouseEnter()
     {
-        Debug.Log("mouse");
         _animator.SetBool("mouseOver", true);
     }
 
