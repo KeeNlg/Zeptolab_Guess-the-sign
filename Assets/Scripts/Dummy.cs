@@ -8,6 +8,8 @@ public class Dummy : MonoBehaviour
     private Animator _animator;
     private bool _playing;
 
+    private Sign _lastPlayed;
+
     private static readonly Dictionary<Sign, string> Triggers = new Dictionary<Sign, string>
     {
         { Sign.Meet, "Meet" },
@@ -41,12 +43,14 @@ public class Dummy : MonoBehaviour
         while (_playing)
         {
             _animator.SetTrigger(Triggers[sign]);
-            yield return new WaitForSeconds(6f);
+            _lastPlayed = sign;
+            yield return new WaitForSeconds(8f);
         }
     }
 
     public void StopCycle()
     {
         _playing = false;
+        StopCoroutine(PlayCycle(_lastPlayed));
     }
 }
