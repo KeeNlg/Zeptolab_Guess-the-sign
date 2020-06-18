@@ -111,6 +111,7 @@ public class ScenarioManager : MonoBehaviour
             _buttonPressed = true;
             Buttons[1].SetGreen();
             Confetti.Spawn();
+            Confetti.SpawnCorrect();
             Dummy.StopCycle();
         };
         

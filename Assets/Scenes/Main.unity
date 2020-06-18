@@ -1538,6 +1538,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SpawnPoint: {fileID: 328702337}
   Prefab: {fileID: 6655114784308771887, guid: 2f378c07c879750459a57ed17567800c, type: 3}
+  PrefabCorrect: {fileID: 1952201558382796871, guid: d133ce520ccc12244b3f7d9d8896d810,
+    type: 3}
+  PrefabWrong: {fileID: 1172123634629848700, guid: 4f61ea8600b9b8749a5dc201f8dd7f78,
+    type: 3}
 --- !u!4 &1835222471
 Transform:
   m_ObjectHideFlags: 0
