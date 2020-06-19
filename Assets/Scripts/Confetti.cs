@@ -4,6 +4,7 @@ using UnityEngine;
 public class Confetti : MonoBehaviour
 {
     public Transform SpawnPoint;
+    public RectTransform Canvas;
     public GameObject Prefab;
     public GameObject PrefabCorrect;
     public GameObject PrefabWrong;
@@ -17,13 +18,15 @@ public class Confetti : MonoBehaviour
     
     public void SpawnCorrect()
     {
-        GameObject remove = Instantiate(PrefabCorrect, SpawnPoint.position, Quaternion.identity);
+        GameObject remove = Instantiate(PrefabCorrect, Canvas);
+        remove.transform.position += new Vector3(0, .3f, 0);
         StartCoroutine(DelayedDestruction(remove, 1.5f));
     }
     
     public void SpawnWrong()
     {
-        GameObject remove = Instantiate(PrefabWrong, SpawnPoint);
+        GameObject remove = Instantiate(PrefabWrong, Canvas);
+        remove.transform.position += new Vector3(0, .3f, 0);
         StartCoroutine(DelayedDestruction(remove, 1.5f));
     }
 

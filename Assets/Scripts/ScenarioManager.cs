@@ -21,9 +21,9 @@ public class ScenarioManager : MonoBehaviour
     {
         //UnityEngine.Cursor.SetCursor(CursorTexture, new Vector2(0, 0), CursorMode.Auto);
         //UnityEngine.Cursor.visible = false;
-        SmartScenario();
+        //DumbScenario();
         //SmartScenario();
-        //ClickbaitScenario();
+        ClickbaitScenario();
     }
     
     //====================================================================
@@ -40,7 +40,7 @@ public class ScenarioManager : MonoBehaviour
         Labels[1].text = "Hollow";
         Labels[2].text = "Hole";
         Labels[3].text = "Love";
-        Dummy.PlaySignCycle(Sign.Love);
+        Dummy.PlaySign(Sign.Love);
         yield return new WaitForSeconds(4f);
         
         //Cursor.gameObject.SetActive(true);
@@ -49,8 +49,13 @@ public class ScenarioManager : MonoBehaviour
             _buttonPressed = true;
             Buttons[3].SetGreen();
             Confetti.Spawn();
+            Confetti.SpawnCorrect();
             Dummy.StopCycle();
         };
+        
+        yield return new WaitForSeconds(6f);
+        
+        Dummy.PlaySign(Sign.Love);
         
         yield return new WaitUntil(() => _buttonPressed);
         
@@ -65,7 +70,7 @@ public class ScenarioManager : MonoBehaviour
         Labels[1].text = "Tight";
         Labels[2].text = "Nice";
         Labels[3].text = "Fast";
-        Dummy.PlaySignCycle(Sign.Nice);
+        Dummy.PlaySign(Sign.Nice);
         yield return new WaitForSeconds(4f);
         
         //Cursor.gameObject.SetActive(true);
@@ -74,8 +79,13 @@ public class ScenarioManager : MonoBehaviour
             _buttonPressed = true;
             Buttons[2].SetGreen();
             Confetti.Spawn();
+            Confetti.SpawnCorrect();
             Dummy.StopCycle();
         };
+        
+        yield return new WaitForSeconds(6f);
+        
+        Dummy.PlaySign(Sign.Nice);
         
         yield return new WaitUntil(() => _buttonPressed);
         
@@ -143,6 +153,7 @@ public class ScenarioManager : MonoBehaviour
         {
             _buttonPressed = true;
             Buttons[0].SetRed();
+            Confetti.SpawnWrong();
             Dummy.StopCycle();
         };
         
@@ -173,6 +184,7 @@ public class ScenarioManager : MonoBehaviour
             _buttonPressed = true;
             Buttons[2].SetGreen();
             Confetti.Spawn();
+            Confetti.SpawnCorrect();
             Dummy.StopCycle();
         };
         
@@ -207,7 +219,7 @@ public class ScenarioManager : MonoBehaviour
         Labels[1].text = "Hole";
         Labels[2].text = "Hollow";
         Labels[3].text = "Cave";
-        Dummy.PlaySignCycle(Sign.Love);
+        Dummy.PlaySign(Sign.Love);
         yield return new WaitForSeconds(4f);
         
         //Cursor.gameObject.SetActive(true);
@@ -215,8 +227,13 @@ public class ScenarioManager : MonoBehaviour
         {
             _buttonPressed = true;
             Buttons[1].SetRed();
+            Confetti.SpawnWrong();
             Dummy.StopCycle();
         };
+        
+        yield return new WaitForSeconds(4f);
+        
+        Dummy.PlaySign(Sign.Love);
         
         yield return new WaitUntil(() => _buttonPressed);
         
@@ -231,7 +248,7 @@ public class ScenarioManager : MonoBehaviour
         Labels[1].text = "No";
         Labels[2].text = "Three";
         Labels[3].text = "Eat";
-        Dummy.PlaySignCycle(Sign.No);
+        Dummy.PlaySign(Sign.No);
         yield return new WaitForSeconds(4f);
         
         //Cursor.gameObject.SetActive(true);
@@ -239,8 +256,13 @@ public class ScenarioManager : MonoBehaviour
         {
             _buttonPressed = true;
             Buttons[2].SetRed();
+            Confetti.SpawnWrong();
             Dummy.StopCycle();
         };
+        
+        yield return new WaitForSeconds(4f);
+        
+        Dummy.PlaySign(Sign.No);
         
         yield return new WaitUntil(() => _buttonPressed);
         
@@ -255,17 +277,27 @@ public class ScenarioManager : MonoBehaviour
         Labels[1].text = "Elevator";
         Labels[2].text = "Understand";
         Labels[3].text = "Ceiling";
-        
         Dummy.PlaySign(Sign.Understand);
         yield return new WaitForSeconds(4f);
         
-        //Cursor.Move(Buttons[0].transform.position, 3f);
-        yield return new WaitForSeconds(3.5f);
+        Buttons[0].OnClick = () =>
+        {
+            _buttonPressed = true;
+            Buttons[0].SetRed();
+            Confetti.SpawnWrong();
+            Dummy.StopCycle();
+        };
         
-        Buttons[0].SetRed();
+        yield return new WaitForSeconds(4f);
+        
+        Dummy.PlaySign(Sign.Understand);
+        
+        yield return new WaitUntil(() => _buttonPressed);
+        
         yield return new WaitForSeconds(2f);
         //===
         
         Buttons[0].SetDefault();
+        Buttons[0].OnClick = () => { };
     }
 }

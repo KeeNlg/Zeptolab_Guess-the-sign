@@ -238,7 +238,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 328702336}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 175, z: 0}
+  m_LocalPosition: {x: 0, y: 200, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1423564873}
@@ -1537,6 +1537,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SpawnPoint: {fileID: 328702337}
+  Canvas: {fileID: 1423564873}
   Prefab: {fileID: 6655114784308771887, guid: 2f378c07c879750459a57ed17567800c, type: 3}
   PrefabCorrect: {fileID: 1952201558382796871, guid: d133ce520ccc12244b3f7d9d8896d810,
     type: 3}
@@ -2059,7 +2060,7 @@ PrefabInstance:
     - target: {fileID: 3641164457798958381, guid: 4481dbb0de993d446a5905e92089f53e,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 1
+      value: -8
       objectReference: {fileID: 0}
     - target: {fileID: 3641164457798958381, guid: 4481dbb0de993d446a5905e92089f53e,
         type: 3}
@@ -2109,7 +2110,7 @@ PrefabInstance:
     - target: {fileID: 3641164457798958381, guid: 4481dbb0de993d446a5905e92089f53e,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -359
+      value: -336
       objectReference: {fileID: 0}
     - target: {fileID: 3641164457798958381, guid: 4481dbb0de993d446a5905e92089f53e,
         type: 3}
