@@ -21,8 +21,8 @@ public class ScenarioManager : MonoBehaviour
     {
         //UnityEngine.Cursor.SetCursor(CursorTexture, new Vector2(0, 0), CursorMode.Auto);
         //UnityEngine.Cursor.visible = false;
-        DumbScenario();
-        //SmartScenario();
+        //DumbScenario();
+        SmartScenario();
         //ClickbaitScenario();
     }
 
