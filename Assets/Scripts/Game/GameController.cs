@@ -84,7 +84,7 @@ public class GameController : MonoBehaviour
     {
         bttnPlay.transform.DOLocalMoveY(-400, 0.5f).OnComplete(()=>
         {
-            bttns.transform.DOLocalMoveY(-175, 0.5f).OnComplete(() =>
+            bttns.transform.DOLocalMoveY(-200, 0.5f).OnComplete(() =>
             {
                 ShowNewTask();
             });
